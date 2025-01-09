@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Habit-Track';
+  title = 'Login&Sign-Up-template';
   isDarkMode = false;
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
