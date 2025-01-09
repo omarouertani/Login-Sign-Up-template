@@ -1,0 +1,30 @@
+@keyframes toastShow {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes toastHide {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+  
+  .animate-toast-show {
+    animation: toastShow 0.5s ease-in-out forwards;
+  }
+  
+  .animate-toast-hide {
+    animation: toastHide 0.5s ease-in-out forwards;
+  }
+  

@@ -1,0 +1,153 @@
+<!-- Formulaire de connexion avec gestion du mode sombre -->
+<div class="flex h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+  <!-- Section gauche : Formulaire -->
+  <div class="flex flex-col justify-center px-6 py-12 w-full lg:w-1/2">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        Connectez-vous à votre compte
+      </h2>
+    </div>
+
+    <!-- Carte -->
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+      <form [formGroup]="loginForm" class="space-y-6" (ngSubmit)="onLogin()">
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-900 dark:text-white">Adresse email</label>
+          <div class="mt-2 relative">
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              required
+              class="block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-600 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm pl-10"
+            />
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <i class="fa-solid fa-user text-gray-400" style="color: #0043b8"></i>
+            </div>
+          </div>
+          <!-- Alerte email -->
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="flex items-center p-4 mb-4 text-sm text-red-600 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <div>
+              <span class="font-medium">Adresse email invalide</span> Veuillez saisir une adresse email valide.
+            </div>
+          </div>
+        </div>
+
+        <!-- Mot de passe -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-900 dark:text-white">Mot de passe</label>
+          <div class="mt-2 relative">
+            <input
+              id="password"
+              type="password"
+              formControlName="password"
+              required
+              class="block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-600 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm pl-10"
+            />
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <i class="fa-solid fa-lock" style="color: #0043b8"></i>
+            </div>
+          </div>
+          <!-- Alerte mot de passe -->
+          <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="flex items-center p-4 mb-4 text-sm text-red-600 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <div>
+              <span class="font-medium">Mot de passe requis</span> Le mot de passe doit comporter au moins 6 caractères.
+            </div>
+          </div>
+        </div>
+
+        <!-- Remember Me -->
+        <div class="flex items-center">
+          <input
+            id="rememberMe"
+            type="checkbox"
+            formControlName="rememberMe"
+            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+          />
+          <label for="rememberMe" class="ml-2 block text-sm text-gray-900 dark:text-white">Se souvenir de moi</label>
+        </div>
+
+        <!-- Bouton de connexion -->
+        <div>
+          <button
+            type="submit"
+            [disabled]="loginForm.invalid"
+            class="cursor-pointer flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition duration-300 ease-in-out hover:bg-blue-700 hover:ring-2 hover:ring-blue-800 hover:shadow-xl hover:shadow-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
+          >
+            Connexion
+          </button>
+        </div>
+  
+        <!-- Lien "Mot de passe oublié" et "Inscription" -->
+        <div class="mt-4 text-center flex items-center justify-center space-x-4">
+          <a
+            routerLink="/mpd-oublie"
+            class="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400"
+          >
+            Mot de passe oublié ?
+          </a>
+          <span class="mx-2 text-gray-400">|</span>
+          <a
+            routerLink="/sign-up"
+            class="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400"
+          >
+            Inscription!
+          </a>
+        </div>
+      </form>
+
+      <!-- Autres options de connexion -->
+      <div class="mt-6">
+        <p class="text-center text-sm text-gray-500 dark:text-white">Ou connectez-vous avec</p>
+        <div class="mt-4 flex justify-center gap-4">
+          <button
+            type="button"
+            (click)="onGoogleLogin()"
+            class="cursor-pointer bg-blue-500 rounded-md text-white font-semibold transition duration-300 ease-in-out hover:bg-blue-700 hover:ring-2 hover:ring-violet-800 hover:shadow-xl hover:shadow-blue-500 focus:ring-blue-300 focus:shadow-blue-400 px-4 py-2 inline-flex items-center"
+          >
+            <img
+              src="https://www.google.com/chrome/static/images/chrome-logo.svg"
+              alt="Google"
+              class="h-5 w-5 mr-2"
+            />
+            Google
+          </button>
+          <button
+            type="button"
+            (click)="onFacebookLogin()"
+            class="cursor-pointer bg-blue-500 rounded-md text-white font-semibold transition duration-300 ease-in-out hover:bg-blue-700 hover:ring-2 hover:ring-violet-800 hover:shadow-xl hover:shadow-blue-500 focus:ring-blue-300 focus:shadow-blue-400 px-4 py-2 inline-flex items-center"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/512px-Facebook_Logo_%282019%29.png"
+              alt="Facebook"
+              class="h-5 w-5 mr-2"
+            />
+            Facebook
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Section droite : Image -->
+  <div class="hidden lg:block lg:w-1/2 bg-blue-200 dark:bg-gray-800">
+    <div
+      class="h-full bg-cover bg-center"
+      [ngStyle]="{
+        'background-image':
+          'url(' +
+          (isDarkMode ? 'assets/imgs/sign-in.webp' : 'assets/imgs/sign-in.webp') +
+          ')'
+      }"
+      loading="lazy"
+    ></div>
+  </div>
+</div>

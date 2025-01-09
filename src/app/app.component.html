@@ -1,0 +1,11 @@
+<router-outlet></router-outlet>
+<button (click)="toggleDarkMode()" class="fixed top-4 right-4 p-3 rounded-full bg-gray-800 text-white shadow-lg focus:outline-none transition-all duration-300">
+    <!-- Icône de lampe avec animation -->
+    <svg *ngIf="!isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C9.243 2 7 4.243 7 7C7 9.245 8.428 11.068 10.5 11.782V15C10.5 15.553 10.947 16 11.5 16H12.5C13.053 16 13.5 15.553 13.5 15V11.782C15.572 11.068 17 9.245 17 7C17 4.243 14.757 2 12 2ZM12 13.5C13.3807 13.5 14.5 14.6193 14.5 16C14.5 17.3807 13.3807 18.5 12 18.5C10.6193 18.5 9.5 17.3807 9.5 16C9.5 14.6193 10.6193 13.5 12 13.5ZM6 20H18C18.5523 20 19 20.4477 19 21C19 21.5523 18.5523 22 18 22H6C5.4477 22 5 21.5523 5 21C5 20.4477 5.4477 20 6 20Z" />
+    </svg>
+  
+    <svg *ngIf="isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-wiggle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C9.243 2 7 4.243 7 7C7 9.245 8.428 11.068 10.5 11.782V15C10.5 15.553 10.947 16 11.5 16H12.5C13.053 16 13.5 15.553 13.5 15V11.782C15.572 11.068 17 9.245 17 7C17 4.243 14.757 2 12 2ZM12 13.5C13.3807 13.5 14.5 14.6193 14.5 16C14.5 17.3807 13.3807 18.5 12 18.5C10.6193 18.5 9.5 17.3807 9.5 16C9.5 14.6193 10.6193 13.5 12 13.5ZM6 20H18C18.5523 20 19 20.4477 19 21C19 21.5523 18.5523 22 18 22H6C5.4477 22 5 21.5523 5 21C5 20.4477 5.4477 20 6 20Z" />
+    </svg>
+  </button>
